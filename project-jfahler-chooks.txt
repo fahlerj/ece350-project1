@@ -3,6 +3,6 @@ Jarod Fahler
 Chris Hooks
 
 Project Proposal:
-Design a hardware / software embedded system that uses a temperature sensor, a screen or seven segment display, and a servo motor.
+Design a hardware / software embedded system that uses a temperature sensor, a LCD or seven segment display, and a servo motor.
 The RPi will read the temperature sensor and calculate a predefined location to move the servo motor to "point" to the current temperature.
-The RPi will also display the actual value read off of the temperature sensor on a group of seven-segment displays, or a LCD display depending on implementation difficulty
+The RPi will also display the actual value read off of the temperature sensor on a group of seven-segment displays, or a LCD depending on implementation difficulty

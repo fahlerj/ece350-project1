@@ -23,3 +23,27 @@
 - [ ] Slide Switch
 - [ ] Push button
 - [X] Adeept Lesson 31 and associated python code
+
+* Pinouts: [0/5] [0%]
+- [ ] Stepper Motor Controller [0/6] [0%]
+  - [ ] IN1  - 31
+  - [ ] IN2  - 33
+  - [ ] IN3  - 35
+  - [ ] IN4  - 37
+  - [ ] 5vDC - 2
+  - [ ] GND  - 39
+- [ ] LCD I2C Screen [0/4] [0%]
+  - [ ] GND  - 9
+  - [ ] 5vDC - 4
+  - [ ] SCL  - 5
+  - [ ] SCA  - 3
+- [ ] DS18B20 Temperature Sensor [0/3] [0%]
+  - [ ] S      - 7
+  - [ ] GND    - 30
+  - [ ] 3.3vDC - 17
+- [ ] Pushbutton [0/2] [0%]
+  - [ ] GND  - TBD
+  - [ ] GPIO - TBD
+- [ ] Slide Switch
+  - [ ] GND  - TBD
+  - [ ] GPIO - TBD

@@ -31,12 +31,12 @@
   - [ ] IN3  - 35
   - [ ] IN4  - 37
   - [ ] 5vDC - 2
-  - [ ] GND  - 39
+  - [ ] GND  - 6
 - [ ] LCD I2C Screen [0/4] [0%]
   - [ ] GND  - 9
   - [ ] 5vDC - 4
   - [ ] SCL  - 5
-  - [ ] SCA  - 3
+  - [ ] SDA  - 3
 - [ ] DS18B20 Temperature Sensor [0/3] [0%]
   - [ ] S      - 7
   - [ ] GND    - 30

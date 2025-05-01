@@ -44,34 +44,34 @@ class Screen():
 
   def __init__(self, cols = 16, rows = 2, addr=0x27, bus=1):
     self.cols = cols
-    self.rows = rows        
+    self.rows = rows
     self.bus_num = bus
     self.bus = smbus.SMBus(self.bus_num)
     self.addr = addr
     self.display_init()
-      
+
   def enable_backlight(self):
     self.data_mask = self.data_mask|self.backlight_mask
-      
+
   def disable_backlight(self):
     self.data_mask = self.data_mask& ~self.backlight_mask
-      
+
   def display_data(self, *args):
     self.clear()
     for line, arg in enumerate(args):
       self.cursorTo(line, 0)
       self.println(arg[:self.cols].ljust(self.cols))
-          
+
   def cursorTo(self, row, col):
     offsets = [0x00, 0x40, 0x14, 0x54]
     self.command(0x80|(offsets[row]+col))
-  
+
   def clear(self):
     self.command(0x10)
 
   def println(self, line):
     for char in line:
-      self.print_char(char)     
+      self.print_char(char)
 
   def print_char(self, char):
     char_code = ord(char)
@@ -95,7 +95,7 @@ class Screen():
   def command(self, value, delay = 50.0):
     self.send(value, 0)
     delayMicroseconds(delay)
-      
+
   def send(self, data, mode):
     self.write4bits((data & 0xF0)|mode)
     self.write4bits((data << 4)|mode)
@@ -104,11 +104,11 @@ class Screen():
     value = value & ~self.enable_mask
     self.expanderWrite(value)
     self.expanderWrite(value | self.enable_mask)
-    self.expanderWrite(value)        
+    self.expanderWrite(value)
 
   def expanderWrite(self, data):
     self.bus.write_byte_data(self.addr, 0, data|self.data_mask)
-       
+
 
 if __name__ == "__main__":
     screen = Screen(bus=1, addr=0x27, cols=16, rows=2)
@@ -119,4 +119,3 @@ if __name__ == "__main__":
       line = "Temp: {:.2f}F".format(temp)
       screen.display_data(line, '')
       sleep(1)
-

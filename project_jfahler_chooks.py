@@ -3,10 +3,19 @@ import smbus
 from time import sleep
 import os
 import Adafruit_DHT as dht
+import RPi.GPIO as GPIO
+
 
 ### Assign GPIO pins for each component
 DHTsensor = dht.DHT11 # sensor type
 DHTpin = 4 # assigns GPIO pin (s pin on DHT sensor)
+
+### Assign GPIO pins for each component
+servopin = 31
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(servopin, GPIO.OUT)
+servo = GPIO.PWM(servopin, 50)
+servo.start(0)
 
 # Reads temperature from all sensors found in /sys/bus/w1/devices/
 # starting with "28-...
@@ -18,6 +27,18 @@ def readSensors():
   else:
     h = t = 0
     return h, t
+
+### SG90 servo takes numerical temperature input and displays
+def servocontrol(temperature, humidity = 0):
+
+  ## We're limiting the temperature band between 0-360F for the purposes of mapping to dial
+  angle = temperature
+  ## set duty cycle to 360 degrees based on dial for temperature readout
+  duty_cycle = 2.5 + 20 * angle / 180
+  servo.ChangeDutyCycle(duty_cycle)
+  sleep(.1)
+
+
 
 def delay(time):
   sleep(time/1000.0)
@@ -110,4 +131,5 @@ if __name__ == "__main__":
       Tprint = "Temp: {:.2f}F".format(tempFar)
       Hprint = "Humidity: {:.1f}%".format(humd)
       screen.display_data(Tprint, Hprint)
+      servocontrol(tempFar)
       sleep(1)

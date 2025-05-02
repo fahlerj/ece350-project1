@@ -5,8 +5,7 @@
  - [X] A temperature sensor shall be used to read and display the temperature in degrees F to an output device
  - [X] The output device shall be a multi digit seven-segment display, or a Liquid Crystal Display
    - If a LCD is used, it shall use the I2C interface standard
- - [ ] There shall be a stepper motor utilized with a "hand" to point to the temperature on a fixed position
-   - [ ] The stepper motor will "calibrate" to zero on program init by turning and a limit switch will be actuated
+ - [ ] There shall be a servo motor utilized with a "hand" to point to the temperature on a fixed position
 
 * Soft (Optional) Requirements [0/3] [0%]
  - [ ] If time permits, implement extended functionality to switch between degrees C and F (F is a base requirement)
@@ -19,28 +18,25 @@
 - [X] Raspberry Pi 4b
 - [X] LCD 1602A
 - [X] Adeept I2C module for LCD 1602A
-- [X] DS18B20 Temperature Module
+- [X] DHT11 Temperature Module
 - [ ] Slide Switch
 - [ ] Push button
 - [X] Adeept Lesson 31 and associated python code
 
-* Pinouts: [0/5] [0%]
-- [ ] Stepper Motor Controller [0/6] [0%]
-  - [ ] IN1  - 31
-  - [ ] IN2  - 33
-  - [ ] IN3  - 35
-  - [ ] IN4  - 37
+* Pinouts: [2/5] [40%]
+- [ ] Servo Motor Controller [0/6] [0%]
+  - [ ] PWM  - 31
   - [ ] 5vDC - 2
   - [ ] GND  - 6
-- [ ] LCD I2C Screen [0/4] [0%]
-  - [ ] GND  - 9
-  - [ ] 5vDC - 4
-  - [ ] SCL  - 5
-  - [ ] SDA  - 3
-- [ ] DS18B20 Temperature Sensor [0/3] [0%]
-  - [ ] S      - 7
-  - [ ] GND    - 30
-  - [ ] 3.3vDC - 17
+- [X] LCD I2C Screen [4/4] [100%]
+  - [X] GND  - 9
+  - [X] 5vDC - 4
+  - [X] SCL  - 5
+  - [X] SDA  - 3
+- [X] DHT11 Temperature Sensor [3/3] [100%]
+  - [X] S      - 7
+  - [X] GND    - 30
+  - [X] 3.3vDC - 17
 - [ ] Pushbutton [0/2] [0%]
   - [ ] GND  - TBD
   - [ ] GPIO - TBD

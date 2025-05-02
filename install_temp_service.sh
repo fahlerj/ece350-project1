@@ -7,11 +7,14 @@ dest_dir="/opt/ece350_project"
 
 project_py_file="project_jfahler_chooks.py"
 
+# Install library at root level
+sudo pip3 list | grep Adafruit-DHT ||\
+	sudo pip3 install Adafruit-DHT
+
 chmod 777 $project_py_file
 sudo rsync -av $project_py_file $dest_dir/
 
 # Update user-specific values
-sed -i s,REPLACE_USER,`whoami`,g ./start_temp.service
 sed -i s,REPLACE_DIR,$dest_dir,g ./start_temp.service
 
 # Install the service file
@@ -25,3 +28,5 @@ sudo systemctl start start_temp.service
 
 # Enable the service on boot
 sudo systemctl enable start_temp.service
+
+sudo systemctl status start_temp.service

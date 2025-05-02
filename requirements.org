@@ -1,33 +1,29 @@
 #+TITLE: Requirements & Optionals for ECE350 Project
 
-* Hard Requirements [3/4] [75%]
+* Hard Requirements [4/4] [100%]
  - [X] The RPI 4b shall be used
  - [X] A temperature sensor shall be used to read and display the temperature in degrees F to an output device
  - [X] The output device shall be a multi digit seven-segment display, or a Liquid Crystal Display
    - If a LCD is used, it shall use the I2C interface standard
- - [ ] There shall be a servo motor utilized with a "hand" to point to the temperature on a fixed position
+ - [X] There shall be a servo motor utilized with a "hand" to point to the temperature on a fixed position
 
-* Soft (Optional) Requirements [0/3] [0%]
- - [ ] If time permits, implement extended functionality to switch between degrees C and F (F is a base requirement)
-   - This would be completed by a push-button or another switching mechanism
- - [ ] If time permits, implement auto-run functionality such that the program runs at boot
+* Soft (Optional) Requirements [2/2] [100%]
+ - [X] If time permits, implement auto-run functionality such that the program runs at boot
    - This would be implemented by a systemd service
- - [ ] If time permits, create a 3d printable case to hold all components
+ - [X] If time permits, create a 3d printable case to hold all components
 
-* Planned Resources [5/7] [71%]
+* Planned Resources [5/5] [100%]
 - [X] Raspberry Pi 4b
 - [X] LCD 1602A
 - [X] Adeept I2C module for LCD 1602A
 - [X] DHT11 Temperature Module
-- [ ] Slide Switch
-- [ ] Push button
 - [X] Adeept Lesson 31 and associated python code
 
-* Pinouts: [2/5] [40%]
-- [ ] Servo Motor Controller [0/6] [0%]
-  - [ ] PWM  - 31
-  - [ ] 5vDC - 2
-  - [ ] GND  - 6
+* Pinouts: [3/3] [100%]
+- [X] Servo Motor Controller [3/3] [100%]
+  - [X] PWM  - 31
+  - [X] 5vDC - 2
+  - [X] GND  - 6
 - [X] LCD I2C Screen [4/4] [100%]
   - [X] GND  - 9
   - [X] 5vDC - 4
@@ -37,9 +33,3 @@
   - [X] S      - 7
   - [X] GND    - 30
   - [X] 3.3vDC - 17
-- [ ] Pushbutton [0/2] [0%]
-  - [ ] GND  - TBD
-  - [ ] GPIO - TBD
-- [ ] Slide Switch
-  - [ ] GND  - TBD
-  - [ ] GPIO - TBD

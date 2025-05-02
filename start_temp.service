@@ -1,0 +1,11 @@
+[Unit]
+Description=ECE350 Project Service
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/tmp/
+User=REPLACE_USER
+ExecStart=python3 -u /tmp/project_jfahler_chooks.py
+KillSignal=SIGINT
+Restart=on-failure

@@ -34,7 +34,7 @@ def servocontrol(temperature, humidity = 0):
   ## We're limiting the temperature band between 0-360F for the purposes of mapping to dial
   angle = temperature
   ## set duty cycle to 360 degrees based on dial for temperature readout
-  duty_cycle = 2.5 + 20 * angle / 180
+  duty_cycle = 2.5 + 10 * angle / 360
   servo.ChangeDutyCycle(duty_cycle)
   sleep(.1)
 
@@ -133,3 +133,4 @@ if __name__ == "__main__":
       screen.display_data(Tprint, Hprint)
       servocontrol(tempFar)
       sleep(1)
+      

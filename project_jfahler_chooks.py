@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import smbus
+import time
 from time import sleep
 import os
 import Adafruit_DHT as dht
@@ -125,12 +126,22 @@ class Screen():
 if __name__ == "__main__":
     screen = Screen(bus=1, addr=0x27, cols=16, rows=2)
     screen.enable_backlight()
+
+    fileWrite = 'dataStore.log'
+    fileOut = open(fileWrite, 'w') # Clear the file on program init
+
     while True:
+      fileOut = open(fileWrite, 'a') # open file for reading on loop start
       humd, temp = readSensors()
-      tempFar = (temp * 9 / 5) + 32
-      Tprint = "Temp: {:.2f}F".format(tempFar)
-      Hprint = "Humidity: {:.1f}%".format(humd)
+      curr_time  = time.ctime()
+      tempFar    = (temp * 9 / 5) + 32
+      Tprint     = "Temp: {:.2f}F".format(tempFar)
+      Hprint     = "Humidity: {:.1f}%".format(humd)
       screen.display_data(Tprint, Hprint)
       servocontrol(tempFar)
+
+      # write the sensor readings to a log file with a timestamp
+      fileOut.write(curr_time + " - " + str(Tprint + ", " + Hprint + "\n"))
+      # flush the contents of the buffer to the file (so it can be followed during program exec)
+      fileOut.close()
       sleep(1)
-      

@@ -8,8 +8,6 @@ import Adafruit_DHT as dht
 DHTsensor = dht.DHT11 # sensor type
 DHTpin = 4 # assigns GPIO pin (s pin on DHT sensor)
 
-
-
 # Reads temperature from all sensors found in /sys/bus/w1/devices/
 # starting with "28-...
 def readSensors():

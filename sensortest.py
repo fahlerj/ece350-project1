@@ -6,10 +6,10 @@ import Adafruit_DHT as dht
 import time
 import RPi.GPIO as GPIO
 
-sensor = dht.DHT11 # sensor type
-pin = 4 # assigns GPIO pin
+DHTsensor = dht.DHT11 # sensor type
+DHTpin = 4 # assigns GPIO pin (s pin on DHT sensor)
 
-h, t = dht.read(sensor, 4)
+h, t = dht.read(DHTsensor, DHTpin)
 
 if h is not None and t is not None:
     print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(t, h))

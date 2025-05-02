@@ -1,30 +1,25 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import smbus
 from time import sleep
 import os
+import Adafruit_DHT as dht
 
-# Reads temperature from sensor and prints to stdout
-# id is the id of the sensor
-def readSensor(id):
-  tfile = open("/sys/bus/w1/devices/"+id+"/w1_slave")
-  text = tfile.read()
-  tfile.close()
-  secondline = text.split("\n")[1]
-  temperaturedata = secondline.split(" ")[9]
-  temperature = float(temperaturedata[2:])
-  temperature = temperature / 1000
-  temp = (temperature * 9 / 5) + 32
-  print("Sensor: " + id  + " - Current temperature : %0.2f F" % temp)
-  return temperature
+### Assign GPIO pins for each component
+DHTsensor = dht.DHT11 # sensor type
+DHTpin = 4 # assigns GPIO pin (s pin on DHT sensor)
+
+
 
 # Reads temperature from all sensors found in /sys/bus/w1/devices/
 # starting with "28-...
 def readSensors():
-  sensor = ""
-  for file in os.listdir("/sys/bus/w1/devices/"):
-    if (file.startswith("28-")):
-      temp = readSensor(file)
-      return temp
+  h, t = dht.read(DHTsensor, DHTpin)
+
+  if h is not None and t is not None:
+    return t 
+  else:
+    h = t = 0
+    return t
 
 def delay(time):
   sleep(time/1000.0)

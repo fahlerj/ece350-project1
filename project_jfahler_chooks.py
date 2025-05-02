@@ -13,20 +13,19 @@ DHTpin = 4 # assigns GPIO pin (s pin on DHT sensor)
 # Reads temperature from all sensors found in /sys/bus/w1/devices/
 # starting with "28-...
 def readSensors():
-  h, t = dht.read(DHTsensor, DHTpin)
+  h, t = dht.read_retry(DHTsensor, DHTpin)
 
   if h is not None and t is not None:
-    return t 
+    return h, t
   else:
     h = t = 0
-    return t
+    return h, t
 
 def delay(time):
   sleep(time/1000.0)
 
 def delayMicroseconds(time):
   sleep(time/1000000.0)
-
 
 class Screen():
 
@@ -104,13 +103,12 @@ class Screen():
   def expanderWrite(self, data):
     self.bus.write_byte_data(self.addr, 0, data|self.data_mask)
 
-
 if __name__ == "__main__":
     screen = Screen(bus=1, addr=0x27, cols=16, rows=2)
     screen.enable_backlight()
     while True:
-      temp = readSensors()
-      temp = (temp * 9 / 5) + 32
-      line = "Temp: {:.2f}F".format(temp)
+      humd, temp = readSensors()
+      tempFar = (temp * 9 / 5) + 32
+      line = "Temp: {:.2f}F".format(tempFar)
       screen.display_data(line, '')
       sleep(1)

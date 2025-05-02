@@ -109,6 +109,7 @@ if __name__ == "__main__":
     while True:
       humd, temp = readSensors()
       tempFar = (temp * 9 / 5) + 32
-      line = "Temp: {:.2f}F".format(tempFar)
-      screen.display_data(line, '')
+      Tprint = "Temp: {:.2f}F".format(tempFar)
+      Hprint = "Humidity: {:.1f}%".format(humd)
+      screen.display_data(Tprint, Hprint)
       sleep(1)

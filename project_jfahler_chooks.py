@@ -128,7 +128,6 @@ if __name__ == "__main__":
     screen.enable_backlight()
 
     fileWrite = 'dataStore.log'
-    fileOut = open(fileWrite, 'w') # Clear the file on program init
 
     while True:
       fileOut = open(fileWrite, 'a') # open file for reading on loop start

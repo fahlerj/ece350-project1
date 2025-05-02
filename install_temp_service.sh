@@ -3,11 +3,11 @@
 echo "This will install the service file to the system"
 set -x
 
-cp -av ./project_jfahler_chooks.py /tmp/
-chmod 777 /tmp/project_jfahler_chooks.py
+chmod 777 ./project_jfahler_chooks.py
 
 # Update user-specific values
-sed -i s/REPLACE_USER/`whoami`/g ./start_temp.service
+sed -i s,REPLACE_USER,`whoami`,g ./start_temp.service
+sed -i s,REPLACE_DIR,`pwd`,g ./start_temp.service
 
 # Install the service file
 sudo cp -av ./start_temp.service /lib/systemd/system/

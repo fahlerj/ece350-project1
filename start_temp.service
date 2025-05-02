@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-WorkingDirectory=/tmp/
+WorkingDirectory=REPLACE_DIR
 User=REPLACE_USER
-ExecStart=python3 -u /tmp/project_jfahler_chooks.py
+ExecStart=python3 -u REPLACE_DIR/project_jfahler_chooks.py
 KillSignal=SIGINT
 Restart=on-failure
